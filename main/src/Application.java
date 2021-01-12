@@ -6,7 +6,7 @@ import resources.ReadCSV;
 public class Application {
     public static void main(String[] args) {
         String delimiter=";";
-        String filepath="C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.csv";
+        String filepath="  insert your filepath here...  ";
 
         ReadCSV csvin=new ReadCSV();
 
