@@ -6,11 +6,10 @@ import resources.ReadCSV;
 public class Application {
     public static void main(String[] args) {
         String delimiter=";";
-        String filepath="  insert your filepath here...  ";
 
-        ReadCSV csvin=new ReadCSV();
-
-        csvin.readCmd(delimiter,filepath);
+        ReadCSV csvin=new ReadCSV(delimiter);
+        csvin.setFilepath();
+        csvin.readCmd();
         Double[][] table=csvin.getTable();
 
         csvin.printTable();
