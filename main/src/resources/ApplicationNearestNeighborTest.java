@@ -1,6 +1,6 @@
-package liferservice.finished.versions;
+package resources;
 
-public class Application
+public class ApplicationNearestNeighborTest
 {
     public static void main(String[] args)
     {

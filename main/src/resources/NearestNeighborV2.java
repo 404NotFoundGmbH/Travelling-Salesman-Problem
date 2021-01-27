@@ -1,4 +1,4 @@
-package liferservice.finished.versions;
+package resources;
 
 public class NearestNeighborV2
 {
@@ -46,6 +46,18 @@ public class NearestNeighborV2
      * @return      First position
      */
     private double swap(double pos2, double pos1) { return  pos2; }
+
+    public double getDistance (double[][] array){
+
+        double distance = 0.0;
+        for (int i = (array.length-1); i > 0; i--){
+            int f = (int) array[i][i];
+            int e = (int) array[i-1][i-1];
+            distance += array[f][e];
+        }
+
+        return distance;
+    }
 
     /**
      * Prints the matrix diagonal backwards. To see the path
