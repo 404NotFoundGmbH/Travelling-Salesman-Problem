@@ -9,7 +9,6 @@ import java.util.Scanner;
 
 /**
  * Reads a csv-file and returns it as needed!
- *
  * @author Valentin Gabriel
  */
 public class ReadCSV {
@@ -18,10 +17,17 @@ public class ReadCSV {
     private String filepath;
     private final String delimiter;
 
+    /**
+     * Constructor of ReadCSV
+     * @param delimiter
+     */
     public ReadCSV(String delimiter) {
         this.delimiter = delimiter;
     }
 
+    /**
+     * asks to input a filepath via cmd and checks it!
+     */
     public void setFilepath() {
         System.out.println("Input Filepath:");
         Scanner sc = new Scanner(System. in );
@@ -47,21 +53,21 @@ public class ReadCSV {
         int numTokens;
         if(filepath!=null) {
             System.out.println("Reading Files from:\n" + filepath + "\n");
-            try (BufferedReader br = Files.newBufferedReader(Paths.get(filepath))) {
+            try (BufferedReader br = Files.newBufferedReader(Paths.get(filepath))) {        //BufferedReader initialized
                 // read the file line by line
                 String line;
-                numTokens = countPoints();
+                numTokens = countPoints();          //count how many "Points" the file has
 
                 table = new Double[numTokens][numTokens];
                 points = new String[numTokens];
 
                 int i = 0, j = 0, counter = 0;
-                while ((line = br.readLine()) != null) {
+                while ((line = br.readLine()) != null) {            //loop through the file and check if file has ended
 
                     // convert line into columns
-                    String[] columns = line.split(delimiter);
+                    String[] columns = line.split(delimiter);       //splits a line, with a given delimiter
 
-                    if (!isDouble(columns[0]) && !isDouble(columns[1])) {
+                    if (!isDouble(columns[0]) && !isDouble(columns[1])) {       //if the first line consists of Names,store them in a separate array.
                         for (String p : columns) {
                             points[i] = p;
                             i++;
@@ -74,7 +80,7 @@ public class ReadCSV {
                             table[j][i] = Double.parseDouble(c);
                             i++;
                         }
-                    } else if (!isDouble(columns[0]) && isDouble(columns[1])) {
+                    } else if (!isDouble(columns[0]) && isDouble(columns[1])) {         //Names also given horizontally
                         for (String c : columns) {
                             if (i != 0) table[j][i - 1] = Double.parseDouble(c);
                             i++;
@@ -98,6 +104,10 @@ public class ReadCSV {
 
     }
 
+    /**
+     * counts the number of points in a given file.
+     * @return numTokens
+     */
     int countPoints() {
         int numTokens = 0;
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filepath))) {
@@ -112,6 +122,13 @@ public class ReadCSV {
 
     }
 
+    /**
+     * returns filepath, if its valid!
+     * returns null, if its unvalid!
+     * checks if the filepath == null
+     * @param filepath
+     * @return filepath or null
+     */
     String checkFilePath(String filepath) {
         File file = null;
         if (this.filepath != null) file = new File(this.filepath);
@@ -128,6 +145,13 @@ public class ReadCSV {
         return null;
     }
 
+    /**
+     * checks if a file is a readable csv-file->return true
+     * if file is not one of the above->return false
+     * @param file
+     * @return boolean
+     * @throws IOException
+     */
     boolean isValidFile(File file) throws IOException {
         //if given file is null return false
         if (file != null) {
@@ -142,6 +166,13 @@ public class ReadCSV {
         return false;
     }
 
+    /**
+     * checks if a given string can be parsed into a double
+     * can be parsed->return true
+     * cannot be parsed->return false
+     * @param str
+     * @return boolean
+     */
     boolean isDouble(String str) {
         try {
             Double.parseDouble(str);
@@ -151,6 +182,9 @@ public class ReadCSV {
         }
     }
 
+    /**
+     * prints table
+     */
     public void printTable() {
         if(table!=null)
             for (Double[] doubles: table) { //this equals to the row in our matrix.
@@ -161,6 +195,9 @@ public class ReadCSV {
             }
     }
 
+    /**
+     * prints points
+     */
     public void printPoints() {
         if(points!=null)
             for (String city: points) {
