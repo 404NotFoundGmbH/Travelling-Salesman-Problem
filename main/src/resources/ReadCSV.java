@@ -13,6 +13,7 @@ import java.util.Scanner;
  */
 public class ReadCSV {
     private Double[][] table;
+    private double[][] dTable;  //für Nearest Neighbor
     private String[] points;
     private String filepath;
     private final String delimiter;
@@ -41,6 +42,9 @@ public class ReadCSV {
     public Double[][] getTable() {
         return table;
     }
+    public double[][] getdTable(){
+        return dTable;
+    }
 
     public String[] getPoints() {
         return points;
@@ -58,6 +62,7 @@ public class ReadCSV {
                 String line;
                 numTokens = countPoints();          //count how many "Points" the file has
 
+                dTable=new double[numTokens][numTokens];
                 table = new Double[numTokens][numTokens];
                 points = new String[numTokens];
 
@@ -78,11 +83,15 @@ public class ReadCSV {
                     if (isDouble(columns[0]) && isDouble(columns[1])) { //No Names given
                         for (String c : columns) {
                             table[j][i] = Double.parseDouble(c);
+                            dTable[j][i] = Double.parseDouble(c);
                             i++;
                         }
                     } else if (!isDouble(columns[0]) && isDouble(columns[1])) {         //Names also given horizontally
                         for (String c : columns) {
-                            if (i != 0) table[j][i - 1] = Double.parseDouble(c);
+                            if (i != 0) {
+                                table[j][i - 1] = Double.parseDouble(c);
+                                dTable[j][i - 1] = Double.parseDouble(c);
+                            }
                             i++;
                         }
                     }
@@ -194,7 +203,15 @@ public class ReadCSV {
                 System.out.println(); //change line on console as row comes to end in the matrix.
             }
     }
-
+    public void printdTable() {
+        if(dTable!=null)
+            for (double[] doubles: dTable) { //this equals to the row in our matrix.
+                for (double aDouble: doubles) { //this equals to the column in each row.
+                    System.out.print(aDouble + "  ");
+                }
+                System.out.println(); //change line on console as row comes to end in the matrix.
+            }
+    }
     /**
      * prints points
      */
