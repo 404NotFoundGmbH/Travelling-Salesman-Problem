@@ -1,5 +1,7 @@
 package resources;
 
+import java.util.Arrays;
+
 public class NearestNeighborV2
 {
     /**
@@ -47,15 +49,31 @@ public class NearestNeighborV2
      */
     private double swap(double pos2, double pos1) { return  pos2; }
 
-    public double getDistance (double[][] array){
+    public double getDistance (double[][] matrix){
 
         double distance = 0.0;
-        for (int i = (array.length-1); i > 0; i--){
-            int f = (int) array[i][i];
-            int e = (int) array[i-1][i-1];
-            distance += array[f][e];
+        for (int i = (matrix.length-1); i > 0; i--){
+            int f = (int) matrix[i][i];
+            int e = (int) matrix[i-1][i-1];
+            distance += matrix[f][e];
         }
 
+        return distance;
+    }
+
+    public double extendedNearestNeighbor(double[][] matrix){
+        double[][] matrix1;
+        double distance = Double.MAX_VALUE;
+        double shortestDistance;
+        for(int i=0; i< matrix.length;i++) {
+            matrix1 = executeNearestNeighbor(matrix,i);
+            shortestDistance = getDistance(matrix1);
+            if (shortestDistance <= distance)
+                distance = shortestDistance;
+        }
+
+
+        //System.out.println(Arrays.toString(distance));
         return distance;
     }
 
