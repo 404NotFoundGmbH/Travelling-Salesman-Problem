@@ -1,11 +1,5 @@
 
-import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
-import java.util.stream.Stream;
 import java.time.Instant;
-import java.util.concurrent.TimeUnit;
 
 import resources.*;
 
@@ -13,20 +7,34 @@ public class Application {
     public static void main(String[] args) {
         String delimiter=";";
 
-        long startTime = Instant.now().toEpochMilli();
 
+
+        //read from csv file
+        /*
         ReadCSV csvin = new ReadCSV(delimiter);
         csvin.setFilepath();
         csvin.readCmd();
         double[][] table = csvin.getdTable();
+        */
+
+        //generate adjacency matrix in java
+        MappingMatrixGenerator matrixGenerator = new MappingMatrixGenerator(10000);
+        double[][] table = matrixGenerator.generate();
+
+        long startTime = Instant.now().toEpochMilli();      //get current time - used to measure execution time
+        System.out.println("Start");
+
+        //NearestNeighbor
 
         NearestNeighborV2 nearestNeighbor = new NearestNeighborV2();
-        System.out.println(nearestNeighbor.extendedNearestNeighbor(table));
+        //nearestNeighbor.executeNearestNeighbor(table,0);
 
-        long endTime = Instant.now().toEpochMilli();
+        //extendedNearestNeighbor
+        System.out.println(nearestNeighbor.extendedNearestNeighbor(table));     //prints the total distance
 
-        long duration = (endTime - startTime);  //divide by 1000000 to get milliseconds.
-        System.out.println("That took " + duration/2 + " milliseconds");
+        long endTime = Instant.now().toEpochMilli();    //get current time - used to measure execution time
 
+        long duration = (endTime - startTime);
+        System.out.println("That took " + duration + " milliseconds");
     }
 }
