@@ -1,4 +1,4 @@
-package resources;
+package grahamalgorithmus;
 
 import java.awt.Point;
 import java.util.*;
@@ -16,9 +16,8 @@ enum Direction {
  * and inserts the remaining nodes in order to solve the TSP (Traveling Salesman Problem)
  */
 public class GrahamAlgorithmusV2 {
-   public static List<Point> allNodes = new ArrayList<>();
+   private static List<Point> allNodes = new ArrayList<>();
    private static List<Point> sortedPoints;
-   public static double finalDistance = 0;
     /**
      * This function saves the given points into the list <code>allNodes</code>
      * @param points List of points which should be calculated
@@ -97,7 +96,7 @@ public class GrahamAlgorithmusV2 {
        List<Point> remainingNodes = new ArrayList<>(sortedPoints);
        remainingNodes.removeAll(convexHull);
 
-
+       double finalDistance = 0;
 
        for(int i = 0; i < remainingNodes.size(); i++){
            int firstIndex = 0;
