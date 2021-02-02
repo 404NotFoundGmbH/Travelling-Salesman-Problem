@@ -75,7 +75,7 @@ public class EchoWebSocket {
         }
 
         @OnWebSocketMessage
-        public void message(Session session, String message) throws IOException, ParseException {
+        public void message(Session session, String message) throws IOException {
             System.out.println("");
             System.out.println("");
             System.out.println("");
