@@ -9,7 +9,6 @@ import java.util.*;
 import java.util.List;
 import java.util.concurrent.*;
 import resources.*;
-import org.json.simple.parser.ParseException;
 
 
 
@@ -28,7 +27,7 @@ public class EchoWebSocket {
             return String.valueOf(points1);
         }
 
-        public double[][] jsonToArray(String message) throws ParseException {
+        public double[][] jsonToArray(String message) {
             StringBuilder sb = new StringBuilder(message);
             sb.deleteCharAt(message.length() - 1);
             sb.deleteCharAt(0);
