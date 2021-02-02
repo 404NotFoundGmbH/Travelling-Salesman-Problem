@@ -2,8 +2,12 @@ public class CoordinatesConvert
 {
     public static void main(String[] args)
     {
-        double[][] coords = {{5,6,7,4,3,5,6,4},
-                             {5,6,2,5,7,45,3,4}};
+        double[][] coords = {{5,6},
+                             {5,8},
+                             {34, 4},
+                             {4,23},
+                             {5, 23},
+                             {1, 4}};
         double[][] test = convert(coords);
 
         for(int count = 0; count < test.length; count++)
@@ -14,9 +18,14 @@ public class CoordinatesConvert
         }
     }
 
+    /**
+     *
+     * @param coords to make a matrix
+     * @return matrix
+     */
     private static double[][] convert(double[][] coords)
     {
-        double[][] matrix = new double[coords[0].length][coords[0].length];
+        double[][] matrix = new double[coords.length][coords.length];
 
         for(int countRow = 0; countRow < matrix.length; countRow++)
         {
@@ -24,11 +33,12 @@ public class CoordinatesConvert
             {
                 if(countColumn != countRow)
                 {
-                    matrix[countRow][countColumn] = Math.sqrt(Math.pow(coords[0][countRow] - coords[0][countColumn], 2) + Math.pow(coords[1][countRow] - coords[1][countColumn], 2));
+                    matrix[countRow][countColumn] = Math.sqrt(Math.pow(coords[countRow][0] - coords[countColumn][0], 2) + Math.pow(coords[countRow][1] - coords[countColumn][1], 2));
                     matrix[countColumn][countRow] = matrix[countRow][countColumn];
                 }
                 else
                     matrix[countRow][countColumn] = 0;
+
             }
         }
         return matrix;
