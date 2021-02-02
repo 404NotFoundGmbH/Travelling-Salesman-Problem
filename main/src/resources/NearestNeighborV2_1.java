@@ -1,4 +1,4 @@
-package liferservice.finished.versions;
+package resources;
 
 public class NearestNeighborV2_1
 {

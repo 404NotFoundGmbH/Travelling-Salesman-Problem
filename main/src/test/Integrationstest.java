@@ -1,2 +1,4 @@
-package test;public class Integrationstest {
+package test;
+
+public class Integrationstest {
 }

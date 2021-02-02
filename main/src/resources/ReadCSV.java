@@ -117,7 +117,7 @@ public class ReadCSV {
      * counts the number of points in a given file.
      * @return numTokens
      */
-    int countPoints() {
+    public int countPoints() {
         int numTokens = 0;
         try (BufferedReader br = Files.newBufferedReader(Paths.get(filepath))) {
 
@@ -138,7 +138,7 @@ public class ReadCSV {
      * @param filepath
      * @return filepath or null
      */
-    String checkFilePath(String filepath) {
+    public String checkFilePath(String filepath) {
         File file = null;
         if (this.filepath != null) file = new File(this.filepath);
 
@@ -161,7 +161,7 @@ public class ReadCSV {
      * @return boolean
      * @throws IOException
      */
-    boolean isValidFile(File file) throws IOException {
+    public boolean isValidFile(File file) throws IOException {
         //if given file is null return false
         if (file != null) {
 
