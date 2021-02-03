@@ -15,7 +15,7 @@ public class Main {
 
         Spark.get("/echo", (request, response) -> {
             HashMap<String, Object> model = new HashMap<>();
-g
+
             return new ThymeleafTemplateEngine().render(new ModelAndView(model,"echoview"));
         }) ;
 

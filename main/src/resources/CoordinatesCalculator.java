@@ -1,3 +1,5 @@
+package resources;
+
 public class CoordinatesCalculator
 {
     /**
@@ -16,7 +18,7 @@ public class CoordinatesCalculator
      * @param matrix  Matrix with the distances between the points.
      * @return coords 2d array with the respective x and y values of the points
      */
-    public double[][] executeCalculator(double[][] matrix)
+    public static double[][] executeCalculator(double[][] matrix)
     {
         double[][] coords = new double[matrix.length][2];
 

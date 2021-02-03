@@ -1,6 +1,7 @@
-package resources;
+package test;
 
-import org.junit.Test;
+import org.testng.annotations.Test;
+import resources.GrahamAlgorithmusV2;
 
 
 import java.awt.Point;

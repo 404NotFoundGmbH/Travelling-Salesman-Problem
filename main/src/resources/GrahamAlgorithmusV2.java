@@ -17,7 +17,7 @@ enum Direction {
  * and inserts the remaining nodes in order to solve the TSP (Traveling Salesman Problem)
  */
 public class GrahamAlgorithmusV2 {
-   protected static List<Point2D> allNodes = new ArrayList<>();
+   public static List<Point2D> allNodes = new ArrayList<>();
    protected static List<Point2D> sortedPoints;
     /**
      * This function saves the given points into the list <code>allNodes</code>

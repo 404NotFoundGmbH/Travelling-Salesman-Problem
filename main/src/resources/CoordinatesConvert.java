@@ -1,3 +1,5 @@
+package resources;
+
 public class CoordinatesConvert
 {
     public static void main(String[] args)
@@ -28,7 +30,7 @@ public class CoordinatesConvert
      * @param coords to make a matrix
      * @return matrix
      */
-    private static double[][] convert(double[][] coords)
+    public static double[][] convert(double[][] coords)
     {
         double[][] matrix = new double[coords.length][coords.length];
 

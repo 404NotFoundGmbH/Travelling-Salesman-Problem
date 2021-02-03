@@ -56,7 +56,7 @@ public class Integrationstest {
     @Test
     public void integrationread(){
         ReadCSV test=new ReadCSV(";");
-        test.filepath="C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.csv";
+        //test.filepath="C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.csv";
         test.readCmd();
 
         double[][] table = test.getdTable();
