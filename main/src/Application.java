@@ -48,7 +48,7 @@ public class Application {
             points.add(bo);
         }
 
-        GrahamAlgorithmusV2.allNodes = points;
+        GrahamAlgorithmusV2.setNodes(points);
         System.out.println(GrahamAlgorithmusV2.computeConvexHull());
 /*
         long startTime = Instant.now().toEpochMilli();      //get current time - used to measure execution time
