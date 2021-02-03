@@ -20,7 +20,7 @@ public class Application {
                 {200, 200.5617112013158,260.4274125362986, 0 }};
         String delimiter=";";
 
-        System.out.println("Suche den Algorithmus aus:\n1. NearestNeighbor\n2. Extended Nearestneighbor\n3. Beide\n\n");3
+        System.out.println("Suche den Algorithmus aus:\n1. NearestNeighbor\n2. Extended Nearestneighbor\n3. Beide\n\n");
 
         Scanner sc2 = new Scanner(System.in);
         int eingabe = sc2.nextInt();
