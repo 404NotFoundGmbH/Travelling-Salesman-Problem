@@ -27,8 +27,8 @@ public class CoordinatesConvert
      * the distances between the points are entered. Thereby it is entered parallel 
      * twice into the matrix, since there are always two directions (A -> B or B -> A).
      *
-     * @param coords to make a matrix
-     * @return matrix
+     * @param coords Array with the coordinates
+     * @return matrix Matrix with the distances of the points
      */
     public static double[][] convert(double[][] coords)
     {

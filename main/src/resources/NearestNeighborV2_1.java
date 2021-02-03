@@ -45,7 +45,7 @@ public class NearestNeighborV2_1
      *
      * @param pos2  Second position
      * @param pos1  First position
-     * @return      First position
+     * @return      Second position
      */
     private int swap(int pos2, int pos1) { return  pos2; }
 }
