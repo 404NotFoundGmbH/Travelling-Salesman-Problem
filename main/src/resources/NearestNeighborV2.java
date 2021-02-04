@@ -1,7 +1,8 @@
 package resources;
 
-import java.util.Arrays;
-
+/**
+ * This class implements the algorithm nearest neighbour
+ */
 public class NearestNeighborV2
 {
     /**

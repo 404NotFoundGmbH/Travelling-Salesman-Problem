@@ -1,5 +1,8 @@
 package resources;
 
+/**
+ * This class converts a matrix of coordinates to an adjacency matrix
+ */
 public class CoordinatesConvert
 {
     public static void main(String[] args)

@@ -2,6 +2,9 @@ package test;
 
 import resources.NearestNeighborV2;
 
+/**
+ * This class tests the nearest neighbor algorithm together with the class Application
+ */
 public class ApplicationNearestNeighborTest
 {
     public static void main(String[] args)

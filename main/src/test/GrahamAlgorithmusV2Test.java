@@ -9,6 +9,9 @@ import java.util.ArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * This class tests the graham scan algorithm
+ */
 
 class GrahamAlgorithmusV2Test {
     @Test

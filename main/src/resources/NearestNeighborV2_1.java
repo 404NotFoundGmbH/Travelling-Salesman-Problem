@@ -1,5 +1,9 @@
 package resources;
 
+/**
+ * this class implements the algorithm nearest neighbor
+ */
+
 public class NearestNeighborV2_1
 {
     /**

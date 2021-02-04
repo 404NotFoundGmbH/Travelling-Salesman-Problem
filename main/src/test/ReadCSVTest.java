@@ -1,8 +1,7 @@
 package test;
 
-import resources.ReadCSV;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
+import resources.ReadCSV;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,6 +9,9 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class tests the correct reading of the csv file
+ */
 public class ReadCSVTest {
     @Test
     public void checkFilePathshouldHandle_null(){
