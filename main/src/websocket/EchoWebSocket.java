@@ -61,6 +61,20 @@ public class EchoWebSocket {
         return points;
     }
 
+    public String array2dToJson(double[][] array){
+        String str = "[";
+
+        for (int i=0;i<array.length;i++){
+            str = str.concat(String.valueOf(array[i][0]));
+            str = str.concat(",");
+            str = str.concat(String.valueOf(array[i][1]));
+            str = str.concat(",");
+        }
+
+        StringBuilder str1 = new StringBuilder(str);
+        str1.setCharAt(str.length()-1, ']');
+        return String.valueOf(str1);
+    }
 
     // Store sessions if you want to, for example, broadcast a message to all users
     private static final Queue<Session> sessions = new ConcurrentLinkedQueue<>();
@@ -83,9 +97,15 @@ public class EchoWebSocket {
         System.out.println("");
         System.out.println("Got: " + message);   // Print message
         double[][] test = jsonToArray(message);
-        System.out.println(Arrays.deepToString(test));
+        System.out.println("Converted to array" + Arrays.deepToString(test));
         test = CoordinatesConvert.convert(test);
-        System.out.println(Arrays.deepToString(test));
+        NearestNeighborV2 nearestNeighborV2 = new NearestNeighborV2();
+        test = nearestNeighborV2.executeNearestNeighbor(test,0);
+        test =  CoordinatesCalculator.executeCalculator(test);
+
+        String str = array2dToJson(test);
+        //test = CoordinatesConvert.convert(test);
+        //System.out.println(Arrays.deepToString(test));
 
         /*
         GrahamAlgorithmusV2.allNodes.add(new Point(32,27));
@@ -100,7 +120,7 @@ public class EchoWebSocket {
              */
 
 
-        session.getRemote().sendString(Arrays.deepToString(test)); // sends the into json format converted points
+        session.getRemote().sendString(str); // sends the into json format converted points
         //session.getRemote().sendString(String.valueOf(GrahamAlgorithmusV2.finalDistance));  //sends the distance of convex Hull
     }
 
