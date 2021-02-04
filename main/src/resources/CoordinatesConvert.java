@@ -32,7 +32,7 @@ public class CoordinatesConvert
      * loop goes through the matrix. If row = column occurs, 0 is inserted 
      * there. In the other fields the formula is used: Root((x2 - x1)^2 + (y2 - y1)^2) 
      * the distances between the points are entered. Thereby it is entered parallel 
-     * twice into the matrix, since there are always two directions (A -> B or B -> A).
+     * twice into the matrix, since there are always two directions (A - B or B - A).
      *
      * @param coords Array with the coordinates
      * @return matrix Matrix with the distances of the points
