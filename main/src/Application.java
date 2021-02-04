@@ -1,13 +1,9 @@
 
-import java.awt.*;
-import java.awt.geom.Point2D;
-import java.time.Instant;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.List;
+import resources.GrahamAlgorithmusV2;
 
-import resources.*;
+import java.awt.geom.Point2D;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Application {
 
@@ -36,20 +32,22 @@ public class Application {
         //double[][] table = matrixGenerator.generate();
 
 
-        matrix = CoordinatesCalculator.executeCalculator(matrix);
-        System.out.println(Arrays.deepToString(matrix));
+        //matrix = CoordinatesCalculator.executeCalculator(matrix);
+        //System.out.println(Arrays.deepToString(matrix));
 
 
         List<Point2D> points = new ArrayList<>();
-        Point2D bo = new Point();
 
-        for (int i=0;i< matrix.length;i++) {
-            bo.setLocation(matrix[i][0], matrix[i][1]);
-            points.add(bo);
+        for (int i=0;i < matrix.length;i++) {
+            points.add(i, new Point2D.Double(matrix[i][0], matrix[i][1]));
         }
+        System.out.println(points);
 
         GrahamAlgorithmusV2.setNodes(points);
         System.out.println(GrahamAlgorithmusV2.computeConvexHull());
+
+        //GrahamAlgorithmusV2.setNodes(points);
+        //System.out.println(GrahamAlgorithmusV2.computeConvexHull());
 /*
         long startTime = Instant.now().toEpochMilli();      //get current time - used to measure execution time
         System.out.println("Start");

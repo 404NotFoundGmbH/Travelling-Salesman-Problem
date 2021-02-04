@@ -2,15 +2,15 @@ package websocket;
 
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
+import resources.CoordinatesConvert;
 
-import java.awt.*;
 import java.awt.geom.Point2D;
-import java.io.*;
-import java.util.*;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
-import java.util.concurrent.*;
-import resources.*;
-
+import java.util.Queue;
+import java.util.concurrent.ConcurrentLinkedQueue;
 
 
 @WebSocket
