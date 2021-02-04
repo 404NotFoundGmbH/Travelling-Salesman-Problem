@@ -1,12 +1,12 @@
 import org.junit.jupiter.api.Test;
-import resources.NearestNeighborV2;
 import resources.ReadCSV;
 import test.NearestNeighborV2test;
 
-
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 
+/**
+ * This class implements the integration tests for the whole project
+ */
 public class Integrationstest {
     String filepath="C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.csv";
     double[][] correcttable={{0.0,15.0,64.0,30.0,36.0,45.0,},
@@ -53,6 +53,9 @@ public class Integrationstest {
             {14.0,17.0,16.0,8.0,5.0,9.0,6.0,7.0,}};
 
 
+    /**
+     * This method tests the csv Reader class
+     */
     @Test
     public void integrationread(){
         ReadCSV test=new ReadCSV(";");
@@ -71,12 +74,19 @@ public class Integrationstest {
             j++;
         }
     }
+
+    /**
+     * This method tests the nearest neighbor algorithmV2
+     */
     @Test
     public void integrationNNV2(){
         NearestNeighborV2test test=new NearestNeighborV2test();
         test.executeNearestNeighborTest();
     }
 
+    /**
+     * This method tests the application
+     */
     @Test
     public void applicationtest(){
         integrationread();      //with filepath

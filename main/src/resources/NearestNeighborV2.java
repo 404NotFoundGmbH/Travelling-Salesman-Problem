@@ -1,7 +1,8 @@
 package resources;
 
-import java.util.Arrays;
-
+/**
+ * This class implements the algorithm nearest neighbour
+ */
 public class NearestNeighborV2
 {
     /**
@@ -13,6 +14,7 @@ public class NearestNeighborV2
      *
      * @param matrix        Matrix with the distances between the points.
      * @param startPoint    Define the startPoint
+     * @return the matrix in which there are the points in sorted order
      */
 
     public double[][] executeNearestNeighbor(double[][] matrix, int startPoint)
@@ -49,6 +51,11 @@ public class NearestNeighborV2
      */
     private double swap(double pos2, double pos1) { return  pos2; }
 
+    /**
+     * This calculated the distance of the route
+     * @param matrix all points
+     * @return the distance
+     */
     public double getDistance (double[][] matrix){
 
         double distance = 0.0;
@@ -61,6 +68,11 @@ public class NearestNeighborV2
         return distance;
     }
 
+    /**
+     * This method implements the extended nearest neighbor algorithm to solve the TSP
+     * @param matrix all points
+     * @return the calculated distance
+     */
     public double extendedNearestNeighbor(double[][] matrix){
         double[][] matrix1;
         double distance = Double.MAX_VALUE;

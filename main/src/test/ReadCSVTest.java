@@ -1,8 +1,7 @@
 package test;
 
-import resources.ReadCSV;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.*;
+import resources.ReadCSV;
 
 import java.io.File;
 import java.io.IOException;
@@ -10,7 +9,13 @@ import java.io.IOException;
 import static org.junit.Assert.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+/**
+ * This class tests the correct reading of the csv file
+ */
 public class ReadCSVTest {
+    /**
+     * tests if the program is working properly if the file path is null
+     */
     @Test
     public void checkFilePathshouldHandle_null(){
         ReadCSV tester=new ReadCSV(";");
@@ -19,6 +24,10 @@ public class ReadCSVTest {
         assertNull(tester.checkFilePath(null));
 
     }
+
+    /**
+     * tests if it shows correctly if a file is not valid
+     */
     @Test
     public void isValidFileshoulddifferenciate(){
         File file=new File("C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.csv");
@@ -35,6 +44,10 @@ public class ReadCSVTest {
             System.out.println("l");
         }
     }
+
+    /**
+     * tests if the number of points read is right
+     */
     @Test
     public void countPointshouldbeRight(){
         String filepath= "C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.csv";
@@ -42,6 +55,10 @@ public class ReadCSVTest {
         assertEquals(6,tester.countPoints());
 
     }
+
+    /**
+     * tests the input from the commandline
+     */
     @Test
     public void readCmdtest(){
         //Integrationstest wird gebraucht

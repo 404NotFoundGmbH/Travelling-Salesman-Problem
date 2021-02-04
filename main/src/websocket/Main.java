@@ -6,8 +6,15 @@ import spark.template.thymeleaf.ThymeleafTemplateEngine;
 
 import java.util.HashMap;
 
+/**
+ * The Main of the @see EchoWebSocket
+ */
 public class Main {
 
+    /**
+     * This is the main
+     * @param args manual input
+     */
     public static void main(String[] args) {
         Spark.webSocket("/websocket/echo", EchoWebSocket.class);
 

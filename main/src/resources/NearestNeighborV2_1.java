@@ -1,5 +1,9 @@
 package resources;
 
+/**
+ * this class implements the algorithm nearest neighbor
+ */
+
 public class NearestNeighborV2_1
 {
     /**
@@ -14,6 +18,7 @@ public class NearestNeighborV2_1
      *
      * @param matrix        Matrix with the distances between the points.
      * @param startPoint    Define the startPoint
+     * @return The calculated path
      */
     public int[] executeNearestNeighbor(double[][] matrix, int startPoint)
     {

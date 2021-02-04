@@ -1,7 +1,14 @@
 package resources;
 
+/**
+ * This class converts a matrix of coordinates to an adjacency matrix
+ */
 public class CoordinatesConvert
 {
+    /**
+     * the main of this converter
+     * @param args manual input
+     */
     public static void main(String[] args)
     {
         double[][] coords = {{5,6},

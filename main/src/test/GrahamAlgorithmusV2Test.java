@@ -9,36 +9,11 @@ import java.util.ArrayList;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
+/**
+ * This class tests the graham scan algorithm
+ */
 
 class GrahamAlgorithmusV2Test {
-
-    @Test
-    public void getLowestYTest(){
-        ArrayList<Point2D> points = new ArrayList<>();
-
-        Point2D a = new Point2D.Double(1.43, 0.74);
-        Point2D b = new Point2D.Double(5.71, 1.34);
-        Point2D c = new Point2D.Double(4.79, 2.86);
-        Point2D d = new Point2D.Double(4,5);
-        Point2D e = new Point2D.Double(1.89,4.66);
-        Point2D f = new Point2D.Double(1.49,3.46);
-        Point2D g = new Point2D.Double(0.65,3.28);
-        Point2D h = new Point2D.Double(0.09,2.38);
-        Point2D i = new Point2D.Double(0.99,0.46);
-
-        points.add(a);
-        points.add(b);
-        points.add(c);
-        points.add(d);
-        points.add(e);
-        points.add(f);
-        points.add(g);
-        points.add(h);
-        points.add(i);
-
-        GrahamAlgorithmusV2.setNodes(points);
-
-    }
     @Test
     public void sortAllNodesByAngleAndSolutionTest(){
 

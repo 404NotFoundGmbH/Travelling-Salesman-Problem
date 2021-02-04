@@ -1,5 +1,8 @@
 package resources;
 
+/**
+ * this class calculates the coordinates out of an adjacency matrix
+ */
 public class CoordinatesCalculator
 {
     /**

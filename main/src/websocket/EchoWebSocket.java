@@ -12,10 +12,16 @@ import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
-
+/**
+ * This class gets the coordinates from the website
+ */
 @WebSocket
 public class EchoWebSocket {
-
+    /**
+     * This converts a Point to Json format
+     * @param points List of points which should be converted
+     * @return the point list as a String
+     */
     public String pointToJson(List<Point2D> points){
         String string = "[";
 
@@ -28,6 +34,11 @@ public class EchoWebSocket {
         return String.valueOf(points1);
     }
 
+    /**
+     * This method converts the coordinates from format json to an array
+     * @param message these are the coordinates in json format
+     * @return the matrix with the coordinates as double
+     */
     public double[][] jsonToArray(String message) {
         StringBuilder sb = new StringBuilder(message);
         sb.deleteCharAt(message.length() - 1);
@@ -77,18 +88,37 @@ public class EchoWebSocket {
     }
 
     // Store sessions if you want to, for example, broadcast a message to all users
+    /**
+     * Store session if you want to, e.g. broadcast a message to all users
+     */
     private static final Queue<Session> sessions = new ConcurrentLinkedQueue<>();
 
+    /**
+     * This method gets the connection to a session
+     * @param session session which you want to connect to
+     */
     @OnWebSocketConnect
     public void connected(Session session) {
         sessions.add(session);
     }
 
+    /**
+     * This method closes the connection to a session
+     * @param session session which you want to close
+     * @param statusCode if 0 everything is ok, if 1 something went wrong
+     * @param reason if something went wrong this shows the reason why
+     */
     @OnWebSocketClose
     public void closed(Session session, int statusCode, String reason) {
         sessions.remove(session);
     }
 
+    /**
+     * This method prints a message
+     * @param session associated session
+     * @param message message which should be shown
+     * @throws IOException Exception is thrown if something went wrong
+     */
     @OnWebSocketMessage
     public void message(Session session, String message) throws IOException {
         System.out.println("");
