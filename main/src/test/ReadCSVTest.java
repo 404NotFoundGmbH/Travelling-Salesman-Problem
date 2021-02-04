@@ -35,14 +35,12 @@ public class ReadCSVTest {
         File file3=new File("C:\\Users\\valen\\OneDrive\\Desktop\\Projekte\\CSVTEST.lsvsa");
         File file4=new File("C:\\Users\\valen\\OneDrive\\Desktop\\Projekte");
         ReadCSV tester=new ReadCSV(",");
-        try {
+
             assertTrue(tester.isValidFile(file));
             assertFalse(tester.isValidFile(file2));
             assertFalse(tester.isValidFile(file3));
             assertFalse(tester.isValidFile(file4));
-        }catch (IOException e){
-            System.out.println("l");
-        }
+
     }
 
     /**
