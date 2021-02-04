@@ -1,14 +1,10 @@
 package test;
 
-import org.testng.annotations.Test;
+import org.junit.Test;
 import resources.GrahamAlgorithmusV2;
 
-
-import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
