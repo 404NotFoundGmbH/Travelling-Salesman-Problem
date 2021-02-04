@@ -1,8 +1,6 @@
-package resources;
-
 public class NearestNeighborCoords
 {
-    public static double[][] cordinatesNearestNeighbor(double[][] coords)
+    public double[][] CordinatesNearestNeighbor(double[][] coords)
     {
         double shortestDistance;
         int safe = 0;
@@ -24,5 +22,5 @@ public class NearestNeighborCoords
         return coords;
     }
 
-    private static double swap(double pos2, double pos1) { return pos2; }
+    private double swap(double pos2, double pos1) { return pos2; }
 }
