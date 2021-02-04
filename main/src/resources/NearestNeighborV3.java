@@ -1,12 +1,14 @@
+package resources;
+
 public class NearestNeighborV3
 {
-    public int[] extendedNearestNeighborV2(double[][] matrix)
+    public static int[] extendedNearestNeighborV2(double[][] matrix)
     {
         int number = executeModifiedNearestNeighbor(matrix);
         return executeNearestNeighbor(matrix, number);
     }
 
-    private int executeModifiedNearestNeighbor(double[][] matrix)
+    private static int executeModifiedNearestNeighbor(double[][] matrix)
     {
         int[] path = new int[matrix.length];
         double shortestWay, bestPath = Double.MAX_VALUE, pathLength = 0;
@@ -46,7 +48,7 @@ public class NearestNeighborV3
         return number;
     }
 
-    public int[] executeNearestNeighbor(double[][] matrix, int startPoint)
+    public static int[] executeNearestNeighbor(double[][] matrix, int startPoint)
     {
         int[] path = new int[matrix.length];
         double shortestWay;
@@ -71,9 +73,9 @@ public class NearestNeighborV3
         return path;
     }
 
-    private int swap(int pos2, int pos1) { return pos2; }
+    private static int swap(int pos2, int pos1) { return pos2; }
 
-    public double getDistance(double[][] matrix, int[] points)
+    public static double getDistance(double[][] matrix, int[] points)
     {
         double distance = matrix[points[0]][points[matrix.length - 1]];
 
