@@ -1,8 +1,5 @@
 
-import resources.CoordinatesCalculator;
-import resources.GrahamAlgorithmusV2;
-import resources.NearestNeighborV3;
-import resources.ReadCSV;
+import resources.*;
 
 import java.awt.geom.Point2D;
 import java.time.Instant;
@@ -77,6 +74,7 @@ public class Application {
                 GrahamAlgorithmusV2.computeConvexHull();
                 endTime = Instant.now().toEpochMilli();    //get current time - used to measure execution time
                 duration = (endTime - startTime);
+                System.out.println("Distance: " + GrahamAlgorithmusV2.getFinalDistance());
                 System.out.println("That took " + duration + " milliseconds");
                 System.out.println("Executed Convex Hull (Graham Algorithmus)");
             break;
@@ -84,25 +82,5 @@ public class Application {
                 System.out.println("Please check your entry and try again!");
             break;
         }
-
-
-
-        //GrahamAlgorithmusV2.setNodes(points);
-        //System.out.println(GrahamAlgorithmusV2.computeConvexHull());
-/*
-
-        System.out.println("Start");
-
-        //NearestNeighbor
-        NearestNeighborV2 nearestNeighbor = new NearestNeighborV2();
-        //nearestNeighbor.executeNearestNeighbor(table,0);
-
-        //extendedNearestNeighbor
-        System.out.println(nearestNeighbor.extendedNearestNeighbor(matrix));     //prints the total distance
-
-
-        System.out.println("That took " + duration + " milliseconds");
-
- */
     }
 }
