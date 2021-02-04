@@ -2,7 +2,7 @@ package websocket;
 
 import org.eclipse.jetty.websocket.api.*;
 import org.eclipse.jetty.websocket.api.annotations.*;
-import resources.CoordinatesConvert;
+import resources.*;
 
 import java.awt.geom.Point2D;
 import java.io.IOException;
@@ -11,37 +11,47 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Queue;
 import java.util.concurrent.ConcurrentLinkedQueue;
+import resources.*;
 
 /**
  * This class gets the coordinates from the website
  */
 @WebSocket
 public class EchoWebSocket {
+
+    int algorithm = 0;  //for choosing between NearestNeighbor(2) and Convex Hull(1)
+
+
     /**
      * This converts a Point to Json format
+     *
      * @param points List of points which should be converted
      * @return the point list as a String
      */
-    public String pointToJson(List<Point2D> points){
+    public String pointToJson(List<Point2D> points) {
         String string = "[";
 
-        for (Point2D i : points){
+        for (Point2D i : points) {
             string = string.concat(i.getX() + "," + i.getY() + ",");
         }
 
         StringBuilder points1 = new StringBuilder(string);
-        points1.setCharAt(string.length()-1, ']');
+        points1.setCharAt(string.length() - 1, ']');
         return String.valueOf(points1);
     }
 
     /**
      * This method converts the coordinates from format json to an array
+     *
      * @param message these are the coordinates in json format
      * @return the matrix with the coordinates as double
      */
     public double[][] jsonToArray(String message) {
+        algorithm = Integer.parseInt(String.valueOf(message.charAt(message.length() - 1)));
+        System.out.println("Algorithm: " + algorithm);
         StringBuilder sb = new StringBuilder(message);
         sb.deleteCharAt(message.length() - 1);
+        sb.deleteCharAt(message.length() - 2);
         sb.deleteCharAt(0);
         message = sb.toString();
         String[] str = message.split(",");
@@ -50,21 +60,18 @@ public class EchoWebSocket {
                 .mapToDouble(Double::parseDouble)
                 .toArray();
 
-        //List<Point> points = new ArrayList<>();
-        double[][] points = new double[(doubleValues.length/2)][2];
+        double[][] points = new double[(doubleValues.length / 2)][2];
         List<Double> longi = new ArrayList<>();
         List<Double> lat = new ArrayList<>();
-        //double[] longi;
-        //double[] lat;
 
-        for (int i=0;i<doubleValues.length;i++) {
-            if (i%2 == 0){
+        for (int i = 0; i < doubleValues.length; i++) {
+            if (i % 2 == 0) {
                 longi.add(doubleValues[i]);
-                lat.add(doubleValues[i+1]);
+                lat.add(doubleValues[i + 1]);
             }
         }
 
-        for (int i=0;i<longi.size();i++){
+        for (int i = 0; i < longi.size(); i++) {
             points[i][0] = longi.get(i).doubleValue();
             points[i][1] = lat.get(i).doubleValue();
         }
@@ -72,10 +79,10 @@ public class EchoWebSocket {
         return points;
     }
 
-    public String array2dToJson(double[][] array){
+    public String array2dToJson(double[][] array) {
         String str = "[";
 
-        for (int i=0;i<array.length;i++){
+        for (int i = 0; i < array.length; i++) {
             str = str.concat(String.valueOf(array[i][0]));
             str = str.concat(",");
             str = str.concat(String.valueOf(array[i][1]));
@@ -83,7 +90,7 @@ public class EchoWebSocket {
         }
 
         StringBuilder str1 = new StringBuilder(str);
-        str1.setCharAt(str.length()-1, ']');
+        str1.setCharAt(str.length() - 1, ']');
         return String.valueOf(str1);
     }
 
@@ -95,6 +102,7 @@ public class EchoWebSocket {
 
     /**
      * This method gets the connection to a session
+     *
      * @param session session which you want to connect to
      */
     @OnWebSocketConnect
@@ -104,9 +112,10 @@ public class EchoWebSocket {
 
     /**
      * This method closes the connection to a session
-     * @param session session which you want to close
+     *
+     * @param session    session which you want to close
      * @param statusCode if 0 everything is ok, if 1 something went wrong
-     * @param reason if something went wrong this shows the reason why
+     * @param reason     if something went wrong this shows the reason why
      */
     @OnWebSocketClose
     public void closed(Session session, int statusCode, String reason) {
@@ -115,6 +124,7 @@ public class EchoWebSocket {
 
     /**
      * This method prints a message
+     *
      * @param session associated session
      * @param message message which should be shown
      * @throws IOException Exception is thrown if something went wrong
@@ -126,32 +136,66 @@ public class EchoWebSocket {
         System.out.println("");
         System.out.println("");
         System.out.println("Got: " + message);   // Print message
-        double[][] test = jsonToArray(message);
-        System.out.println("Converted to array" + Arrays.deepToString(test));
-        test = CoordinatesConvert.convert(test);
-        NearestNeighborV2 nearestNeighborV2 = new NearestNeighborV2();
-        test = nearestNeighborV2.executeNearestNeighbor(test,0);
-        test =  CoordinatesCalculator.executeCalculator(test);
+        double[][] array = jsonToArray(message);
+        System.out.println("Converted to array" + Arrays.deepToString(array));
 
-        String str = array2dToJson(test);
-        //test = CoordinatesConvert.convert(test);
-        //System.out.println(Arrays.deepToString(test));
+        switch (algorithm) {
+            case 1:
+                List<Point2D> points = new ArrayList<>();
 
-        /*
-        GrahamAlgorithmusV2.allNodes.add(new Point(32,27));
-        GrahamAlgorithmusV2.allNodes.add(new Point(20,11));
-        GrahamAlgorithmusV2.allNodes.add(new Point(50,43));
-        GrahamAlgorithmusV2.allNodes.add(new Point(24,53));
-        */
+                for (int i = 0; i < array.length; i++) {
+                    points.add(i, new Point2D.Double(array[i][0], array[i][1]));
+                }
+                System.out.println(points);
 
-            /*
-            JSONArray jsonArray = new JSONArray();
-            jsonArray.add(GrahamAlgorithmusV2.computeConvexHull());
-             */
+                GrahamAlgorithmusV2.setNodes(points);
+                points = GrahamAlgorithmusV2.computeConvexHull();
+                String str = pointToJson(points);
+                session.getRemote().sendString(str);
+                break;
+            case 2:
+                System.out.println(Arrays.deepToString(array));
+                double[][] table1 = CoordinatesConvert.convert(array);
+                array = NearestNeighborCoords.cordinatesNearestNeighbor(array);
+
+                int e=0;
+                double[][] array1 = new double[array.length+1][2]; 
+                for (int i=0; i<array.length;i++){
+                    array1[i][0] = array[i][0];
+                    array1[i][1] = array[i][1];
+                    e++;
+                }
+                
+                array1[e][0] = array[0][0];
+                array1[e][1] = array[0][1];
 
 
-        session.getRemote().sendString(str); // sends the into json format converted points
-        //session.getRemote().sendString(String.valueOf(GrahamAlgorithmusV2.finalDistance));  //sends the distance of convex Hull
+                String str1 = array2dToJson(array1);
+                session.getRemote().sendString(str1);
+                break;
+            case 3:
+                System.out.println(Arrays.deepToString(array));
+                double[][] table2 = CoordinatesConvert.convert(array);
+                array = NearestNeighborCoordsExtended.CordinatesNearestNeighborExtended(table2);
+
+                int f=0;
+                double[][] array2 = new double[array.length+1][2];
+                for (int i=0; i<array.length;i++){
+                    array2[i][0] = array[i][0];
+                    array2[i][1] = array[i][1];
+                    f++;
+                }
+
+                array2[f][0] = array[0][0];
+                array2[f][1] = array[0][1];
+
+                String str2 = array2dToJson(array2);
+                session.getRemote().sendString(str2);
+                break;
+            default:
+                System.out.println("Something went wrong");
+                break;
+
+        }
     }
-
 }
