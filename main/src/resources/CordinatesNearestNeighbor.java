@@ -23,4 +23,14 @@ public class NearestNeighborCoords
     }
 
     private double swap(double pos2, double pos1) { return pos2; }
+    
+    public double getDistance(double[][] coords)
+    {
+        double length = Math.sqrt(Math.pow(coords[0][0] - coords[coords.length - 1][0], 2) + Math.pow(coords[0][1] - coords[coords.length - 1][1], 2));
+
+        for(int count = 1; count < coords.length; count++)
+            length += Math.sqrt(Math.pow(coords[count][0] - coords[count - 1][0], 2) + Math.pow(coords[count][1] - coords[count - 1][1], 2));
+
+        return length;
+    }
 }
