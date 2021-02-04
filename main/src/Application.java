@@ -1,13 +1,14 @@
 
+import resources.CoordinatesCalculator;
 import resources.GrahamAlgorithmusV2;
+import resources.NearestNeighborV3;
+import resources.ReadCSV;
 
 import java.awt.geom.Point2D;
 import java.time.Instant;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
-
-import resources.*;
 
 /**
  * The application to run the project
@@ -25,7 +26,7 @@ public class Application {
         String delimiter=";";
 
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Suche den Algorithmus aus:\n 1) NearestNeighbor\n 2) Extended NearestNeighbor\n 3) Convex Hull (Graham Algorithmus)\n\n");
+        System.out.println("Choose the algorithm:\n 1) NearestNeighbor\n 2) Extended NearestNeighbor\n 3) Convex Hull (Graham Algorithmus)\n\n");
         int eingabe = scanner.nextInt();
 
         //read from csv file
@@ -80,7 +81,7 @@ public class Application {
                 System.out.println("Executed Convex Hull (Graham Algorithmus)");
             break;
             default:
-                System.out.println("Da hast du wohl etwas falsch eingegeben");
+                System.out.println("Please check your entry and try again!");
             break;
         }
 
