@@ -117,7 +117,7 @@ public class GrahamAlgorithmusV2 {
      * This function is used to determine the point with the lowest y-coordinate
      * @param p1 First point to compare with
      * @param p2 Second point to compare with
-     * @return -1 if(p1.y < p2.y), 1 if(p1.y > ps.y)
+     * @return -1 if(p1.y lowerThan p2.y), 1 if(p1.y greaterThan ps.y)
      */
    public static int getLowestY(Point2D p1, Point2D p2){
        //Compare y coordinate

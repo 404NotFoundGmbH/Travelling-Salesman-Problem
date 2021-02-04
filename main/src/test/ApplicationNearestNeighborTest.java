@@ -7,6 +7,10 @@ import resources.NearestNeighborV2;
  */
 public class ApplicationNearestNeighborTest
 {
+    /**
+     * The main of the test class for nearest neighbour
+     * @param args manual input
+     */
     public static void main(String[] args)
     {
         double[][] matrix1 = { {0, 15, 13, 4, 9, 11, 5, 6}, {15, 0, 5, 14, 7, 3, 20, 18}, {13, 5, 0, 10, 12, 4, 16, 14}, {4, 14, 10, 0, 13, 10, 2, 3}, {9, 7, 12, 13, 0, 6, 13, 13}, {11, 3, 4, 10 , 6, 0, 11, 9}, {5, 20, 16, 2, 13, 11, 0, 3}, {6, 18, 14, 3, 13, 9, 3, 0}};

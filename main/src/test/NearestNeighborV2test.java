@@ -45,6 +45,9 @@ public class NearestNeighborV2test {
             {12.0,16.0,19.0,13.0,5.0,9.0,4.0,6.0,},
             {14.0,17.0,16.0,8.0,5.0,9.0,6.0,7.0,}};
 
+    /**
+     * checks if the nearest neighbour is working properly
+     */
     @Test
     public void executeNearestNeighborTest(){
         NearestNeighborV2 tester=new NearestNeighborV2();

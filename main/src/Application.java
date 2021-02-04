@@ -5,9 +5,15 @@ import java.awt.geom.Point2D;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The application to run the project
+ */
 public class Application {
 
-
+    /**
+     * The main of the program
+     * @param args manual input
+     */
     public static void main(String[] args) {
         double[][] matrix = {{0, 15, 64, 200},
                 {15, 0, 60, 200.5617112013158},

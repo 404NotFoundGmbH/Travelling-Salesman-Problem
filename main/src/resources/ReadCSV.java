@@ -20,7 +20,7 @@ public class ReadCSV {
 
     /**
      * Constructor of ReadCSV
-     * @param delimiter
+     * @param delimiter String at which char the points should be delimited
      */
     public ReadCSV(String delimiter) {
         this.delimiter = delimiter;
@@ -39,13 +39,26 @@ public class ReadCSV {
 
     }
 
+    /**
+     * getter method for the table
+     * @return table
+     */
     public Double[][] getTable() {
         return table;
     }
+
+    /**
+     * getter method for the double table
+      * @return double table
+     */
     public double[][] getdTable(){
         return dTable;
     }
 
+    /**
+     * getter method for the attribute points
+     * @return points
+     */
     public String[] getPoints() {
         return points;
     }
@@ -135,21 +148,17 @@ public class ReadCSV {
      * returns filepath, if its valid!
      * returns null, if its unvalid!
      * checks if the filepath == null
-     * @param filepath
+     * @param filepath path of the file
      * @return filepath or null
      */
     public String checkFilePath(String filepath) {
         File file = null;
         if (this.filepath != null) file = new File(this.filepath);
 
-        try {
-            if (isValidFile(file)) {
-                return this.filepath;
-            } else {
-                System.err.println("\nFile not Valid or not accessible!");
-            }
-        } catch(IOException ex) {
-            //System.err.println("InputError");       //when does this print?
+        if (isValidFile(file)) {
+            return this.filepath;
+        } else {
+            System.err.println("\nFile not Valid or not accessible!");
         }
         return null;
     }
@@ -157,11 +166,10 @@ public class ReadCSV {
     /**
      * checks if a file is a readable csv-file->return true
      * if file is not one of the above->return false
-     * @param file
+     * @param file file to be checked
      * @return boolean
-     * @throws IOException
      */
-    public boolean isValidFile(File file) throws IOException {
+    public boolean isValidFile(File file){
         //if given file is null return false
         if (file != null) {
 
@@ -203,6 +211,10 @@ public class ReadCSV {
                 System.out.println(); //change line on console as row comes to end in the matrix.
             }
     }
+
+    /**
+     * this method prints the double table
+     */
     public void printdTable() {
         if(dTable!=null)
             for (double[] doubles: dTable) { //this equals to the row in our matrix.
