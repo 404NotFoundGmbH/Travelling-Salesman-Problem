@@ -1,6 +1,5 @@
 package resources;
 
-//import java.awt.Point;
 import java.awt.geom.Point2D;
 import java.util.*;
 
@@ -15,21 +14,18 @@ enum Direction {
 /**
  * This class makes the convex hull out of a set of points, using the Graham Scan
  * and inserts the remaining nodes in order to solve the TSP (Traveling Salesman Problem)
+ * @author Anna Kaserer
  */
 public class GrahamAlgorithmusV2 {
-   public static List<Point2D> allNodes = new ArrayList<>();
-   protected static List<Point2D> sortedPoints;
+   private static List<Point2D> allNodes = new ArrayList<>();
+   private static List<Point2D> sortedPoints;
+   private static double finalDistance;
     /**
      * This function saves the given points into the list <code>allNodes</code>
      * @param points List of points which should be calculated
      */
    public static void setNodes(List<Point2D> points){
-       /* This function saves all points from the List into the List allNodes
-       allNodes = points;
-        */
-
     allNodes = new ArrayList<>(points);
-
    }
 
     /**
@@ -76,7 +72,7 @@ public class GrahamAlgorithmusV2 {
        //Close stack with so that the start point is also the end point
        pointStack.push(sortedPoints.get(0));
        //give the point stack as an ArrayList to the function insertNodes and return the completed list with all points
-       return insertNodes(new ArrayList<Point2D>(pointStack));
+       return insertNodes(new ArrayList<>(pointStack));
    }
 
     /**
@@ -88,8 +84,6 @@ public class GrahamAlgorithmusV2 {
        //Puts all remaining nodes into the list remaining nodes by copying the List sortedPoints and removing the convex hull
        List<Point2D> remainingNodes = new ArrayList<>(sortedPoints);
        remainingNodes.removeAll(convexHull);
-
-       double finalDistance = 0;
 
        for(int i = 0; i < remainingNodes.size(); i++){
            int firstIndex = 0;
@@ -114,7 +108,7 @@ public class GrahamAlgorithmusV2 {
                    ((lowest.getY() - p1.getY()) * (lowest.getY() - p1.getY())));
            finalDistance+=distance;
        }
-       System.out.println(finalDistance);
+       //System.out.println(finalDistance);
        return convexHull;
    }
 
@@ -154,7 +148,6 @@ public class GrahamAlgorithmusV2 {
                 return 0;
 
             //This calculates the angle of 2 points. atan2() can handle y=0 or x=0
-            //We use long for the coordinates so there's no risk for int-underflow
             double angleP1 = Math.atan2(p1.getY() - lowest.getY(), p1.getX() - lowest.getX());
             double angleP2 = Math.atan2(p2.getY() - lowest.getY(), p2.getX() - lowest.getX());
 
@@ -198,20 +191,12 @@ public class GrahamAlgorithmusV2 {
            return Direction.COLLINEAR;
    }
 
-    public static void main(String[] args) {
-        allNodes.add( new Point2D.Double(59, 38));
-        allNodes.add(new Point2D.Double(32,27));
-        allNodes.add(new Point2D.Double(87,20));
-        allNodes.add(new Point2D.Double(100,5));
-        allNodes.add(new Point2D.Double(10,5));
-        allNodes.add(new Point2D.Double(70, 9));
-        allNodes.add(new Point2D.Double(69,24));
-        allNodes.add(new Point2D.Double(46,14));
-        allNodes.add(new Point2D.Double(66,36));
-
-        System.out.println(computeConvexHull());
-
-
-    }
+    /**
+     * This function returns the final distance of the generated Route
+     * @return final distance
+     */
+   public static double getFinalDistance(){
+       return finalDistance;
+   }
 }
 
