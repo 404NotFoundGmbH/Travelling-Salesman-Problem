@@ -164,8 +164,8 @@ public class ReadCSV {
     }
 
     /**
-     * checks if a file is a readable csv-file->return true
-     * if file is not one of the above->return false
+     * checks if a file is a readable csv-file - return true
+     * if file is not one of the above - return false
      * @param file file to be checked
      * @return boolean
      */
