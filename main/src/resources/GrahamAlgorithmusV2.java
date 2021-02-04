@@ -77,7 +77,8 @@ public class GrahamAlgorithmusV2 {
 
     /**
      * This function inserts the remaining nodes which are not part of the convex hull
-     * @param convexHull the convex hull which was computed by the function @see #computeConvexHull
+     * @see #computeConvexHull()
+     * @param convexHull the convex hull which was computed by the function linked underneath
      * @return the completed list with all nodes
      */
    public static List<Point2D> insertNodes(List<Point2D> convexHull){
