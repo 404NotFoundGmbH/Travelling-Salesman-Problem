@@ -43,7 +43,7 @@ public class Application {
         switch (eingabe){
             case 1:
                 startTime = Instant.now().toEpochMilli();      //get current time - used to measure execution time
-                NearestNeighborV3.executeNearestNeighbor(table,0);
+                System.out.println("Distance: " + NearestNeighborV3.executeNearestNeighbor(table1,0));
                 endTime = Instant.now().toEpochMilli();    //get current time - used to measure execution time
                 duration = (endTime - startTime);
                 System.out.println("That took " + duration + " milliseconds");
@@ -51,7 +51,7 @@ public class Application {
             break;
             case 2:
                 startTime = Instant.now().toEpochMilli();      //get current time - used to measure execution time
-                NearestNeighborV3.extendedNearestNeighborV2(table);
+                System.out.println("Distance: " + NearestNeighborV3.extendedNearestNeighborV2(table1));
                 endTime = Instant.now().toEpochMilli();    //get current time - used to measure execution time
                 duration = (endTime - startTime);
                 System.out.println("That took " + duration + " milliseconds");
