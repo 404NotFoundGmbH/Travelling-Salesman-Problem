@@ -2,13 +2,13 @@ package resources;
 
 public class NearestNeighborV3
 {
-    public static int[] extendedNearestNeighborV2(double[][] matrix)
+    public static double extendedNearestNeighborV2(double[][] matrix)
     {
-        int number = executeModifiedNearestNeighbor(matrix);
-        return executeNearestNeighbor(matrix, number);
+        double number = executeModifiedNearestNeighbor(matrix);
+        return number;
     }
 
-    private static int executeModifiedNearestNeighbor(double[][] matrix)
+    private static double executeModifiedNearestNeighbor(double[][] matrix)
     {
         int[] path = new int[matrix.length];
         double shortestWay, bestPath = Double.MAX_VALUE, pathLength = 0;
@@ -45,11 +45,12 @@ public class NearestNeighborV3
                 number = countPoints;
             }
         }
-        return number;
+        return bestPath;
     }
 
-    public static int[] executeNearestNeighbor(double[][] matrix, int startPoint)
+    public static double executeNearestNeighbor(double[][] matrix, int startPoint)
     {
+        double pathlength = 0;
         int[] path = new int[matrix.length];
         double shortestWay;
 
@@ -69,8 +70,9 @@ public class NearestNeighborV3
                     shortestWay = matrix[path[countRow]][path[countColumn]];
                     startPoint = countColumn;
                 }
+                pathlength+= shortestWay;
         }
-        return path;
+        return pathlength+matrix[path[0]][path[matrix.length-1]];
     }
 
     private static int swap(int pos2, int pos1) { return pos2; }
