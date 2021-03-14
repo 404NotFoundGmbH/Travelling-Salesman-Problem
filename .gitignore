@@ -1,0 +1,7 @@
+
+.idea/.name
+.idea/libraries/ch_qos_logback_logback_classic_1_2_3.xml
+*.class
+*.xml
+adjazenz4.csv
+*.iml
